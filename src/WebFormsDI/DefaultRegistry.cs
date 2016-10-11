@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNet.Identity;
-using StructureMap;
+﻿using StructureMap;
 using WebFormsDI.Models;
 
 namespace WebFormsDI

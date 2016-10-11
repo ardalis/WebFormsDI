@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
@@ -12,28 +11,6 @@ using WebFormsDI.Models;
 
 namespace WebFormsDI.Models
 {
-    public class Product
-    {
-        public string Name { get; set; }
-        public decimal Price { get; set; }
-    }
-    public interface IProductRepository
-    {
-        IEnumerable<Product> List();
-    }
-
-    public class ProductRepository : IProductRepository
-    {
-        public IEnumerable<Product> List()
-        {
-            return new List<Product>()
-            {
-                new Product() {Name = "AT-AT", Price = 500000m},
-                new Product() {Name = "AT-ST", Price = 200000m},
-                new Product() {Name = "Death Star", Price = 10000000m}
-            };
-        }
-    }
     // You can add User data for the user by adding more properties to your User class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
@@ -48,19 +25,6 @@ namespace WebFormsDI.Models
         public Task<ClaimsIdentity> GenerateUserIdentityAsync(ApplicationUserManager manager)
         {
             return Task.FromResult(GenerateUserIdentity(manager));
-        }
-    }
-
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
-    {
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
-        {
-        }
-
-        public static ApplicationDbContext Create()
-        {
-            return new ApplicationDbContext();
         }
     }
 }
